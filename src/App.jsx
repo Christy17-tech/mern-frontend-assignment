@@ -24,7 +24,7 @@ function AnimatedRoutes() {
 function App() {
   return (
     <EmployeeProvider>
-      <Router>
+      <Router basename="/mern-frontend-assignment">
         <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-indigo-500/30">
           <Navbar />
           <AnimatedRoutes />
