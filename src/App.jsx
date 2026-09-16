@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import EmployeeForm from './pages/EmployeeForm';
+import { EmployeeProvider } from './context/EmployeeContext';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -19,14 +20,17 @@ function AnimatedRoutes() {
   );
 }
 
+
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-indigo-500/30">
-        <Navbar />
-        <AnimatedRoutes />
-      </div>
-    </Router>
+    <EmployeeProvider>
+      <Router>
+        <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-indigo-500/30">
+          <Navbar />
+          <AnimatedRoutes />
+        </div>
+      </Router>
+    </EmployeeProvider>
   );
 }
 

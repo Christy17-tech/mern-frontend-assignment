@@ -1,26 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Hash, User, Loader2, Phone, Globe, MapPin, Building, X } from 'lucide-react';
+import { EmployeeContext } from '../context/EmployeeContext';
 
 const Dashboard = () => {
-  const [employees, setEmployees] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { employees, loading } = useContext(EmployeeContext);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-  useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        const data = await response.json();
-        setEmployees(data);
-      } catch (error) {
-        console.error('Failed to fetch employees:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchEmployees();
-  }, []);
 
   // Prevent scrolling when modal is open
   useEffect(() => {

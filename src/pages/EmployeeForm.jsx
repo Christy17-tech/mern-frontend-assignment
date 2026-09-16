@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Briefcase, MapPin, DollarSign, User, CheckCircle2 } from 'lucide-react';
+import { EmployeeContext } from '../context/EmployeeContext';
 
 const EmployeeForm = () => {
   const navigate = useNavigate();
+  const { addEmployee } = useContext(EmployeeContext);
   const [formData, setFormData] = useState({
     name: '',
     designation: '',
@@ -27,7 +29,9 @@ const EmployeeForm = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      console.log('Form Submitted Data:', formData);
+      
+      // Add employee to global state
+      addEmployee(formData);
       
       setTimeout(() => {
         navigate('/dashboard');
