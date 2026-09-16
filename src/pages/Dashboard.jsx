@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Hash, User, Loader2, Phone, Globe, MapPin, Building, X } from 'lucide-react';
 import { EmployeeContext } from '../context/EmployeeContext';
